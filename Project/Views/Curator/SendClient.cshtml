@@ -1,0 +1,28 @@
+﻿@model Project.Models.Runner
+@{
+    ViewData["Title"] = "SendClient";
+}
+
+
+<h4>Передача клиента</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="sendClient">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="@Model.Id" />
+            <input type="hidden" asp-for="@Model.Phone" />
+            <input type="hidden" asp-for="@Model.Surname" />
+            <input type="hidden" asp-for="@Model.Name" />
+            <input type="hidden" asp-for="@Model.Patronymic" />
+            <input type="hidden" asp-for="@Model.Comment" />
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label">Кому</label>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.Users" style="width: auto;"></select>
+            </div>
+            <div class="form-group mt-4">
+                <input type="submit" value="Отправить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

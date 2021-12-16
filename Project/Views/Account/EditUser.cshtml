@@ -1,0 +1,39 @@
+﻿@model Project.Models.User
+@{
+    ViewData["Title"] = "EditUser";
+}
+
+<h4>Редактирование пользователя</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="editUser">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="PasswordHash" />
+            <div>
+                <label asp-for="Phone">Телефон</label><br />
+                <input asp-for="Phone" />
+                <span asp-validation-for="Phone"></span>
+            </div>
+            <div>
+                <label asp-for="Surname">Фамилия</label><br />
+                <input asp-for="Surname" />
+                <span asp-validation-for="Surname"></span>
+            </div>
+            <div>
+                <label asp-for="Name">Имя</label><br />
+                <input asp-for="Name" />
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div>
+                <label asp-for="Patronymic">Отчество</label><br />
+                <input asp-for="Patronymic" />
+                <span asp-validation-for="Patronymic"></span>
+            </div>
+            <div class="form-group mt-4">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

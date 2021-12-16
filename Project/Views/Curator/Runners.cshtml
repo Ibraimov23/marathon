@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Project.Models.Runner>
+
+@{
+    ViewData["Title"] = "Runners";
+}
+
+<h1>Клиенты</h1>
+<h5 class="text-right"><a asp-action="ExcelRunner">Выгрузить в excel</a></h5>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Телефон
+            </th>
+            <th>
+                Фамилия
+            </th>
+            <th>
+                Имя
+            </th>
+            <th>
+                Отчество
+            </th>
+            <th>
+                Куратор
+            </th>
+            <th>
+                Комментарие
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Runner item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patronymic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                <a asp-action="SendClient" asp-route-id="@item.Id">Передать клиента</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

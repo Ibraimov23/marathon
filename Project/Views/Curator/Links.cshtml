@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Project.Models.Link>
+
+@{
+    ViewData["Title"] = "Links";
+}
+
+<h1>Ссылки</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Url адреса
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Link item in Model)
+        {
+        <tr>
+            <td>
+                @String.Concat(ViewBag.Link,item.Url)
+            </td>
+            <td>
+                @if (item.Active == true)
+                {
+                <form asp-action="UpdateLink" asp-route-id="@item.Id" asp-route-active="@false" method="post">
+                    <input type="submit" class="btn btn-danger" value="Отключить" />
+                </form>
+                }
+                else
+                {
+                    <form asp-action="UpdateLink" asp-route-id="@item.Id" asp-route-active="@true" method="post">
+                        <input type="submit" class="btn btn-success" value="Активировать" />
+                    </form>
+                }
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

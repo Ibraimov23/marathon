@@ -1,0 +1,38 @@
+﻿@model Project.Models.Link
+@{
+    ViewData["Title"] = "AddLink";
+}
+
+
+<h4>Ссылка</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="addLink">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <label asp-for="Url">Url</label><br />
+                <div class="d-flex">@ViewBag.Link
+                <input asp-for="Url" /></div>
+                <span asp-validation-for="Url"></span>
+            </div>
+            <div>
+                <label asp-for="ShelfLife">Срок действие</label><br />
+                <input asp-for="ShelfLife" type="date" />
+                <span asp-validation-for="ShelfLife"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label">Куратор</label>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.Users" style="width: auto;"></select>
+            </div>
+            <div>
+                <label asp-for="Active">Активный</label><br />
+                <input asp-for="Active" />
+                <span asp-validation-for="Active"></span>
+            </div>
+            <div class="form-group mt-4">
+                <input type="submit" value="Создать" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

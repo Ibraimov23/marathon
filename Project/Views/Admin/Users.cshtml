@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Project.Models.User>
+@using Microsoft.AspNetCore.Identity
+@using Project.Data
+@inject ApplicationContext _applicationContext
+@{
+    ViewData["Title"] = "Users";
+}
+
+<h1>Пользователи</h1>
+<h5 class="pt-2"><a asp-area="" asp-controller="admin" asp-action="addUser">Добавить пользователя</a></h5>
+<h5 class="text-right"><a asp-action="ExcelUser">Выгрузить в excel</a></h5>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Телефон
+            </th>
+            <th>
+                Фамилия
+            </th>
+            <th>
+                Имя
+            </th>
+            <th>
+                Отчество
+            </th>
+            <th>
+                Роль
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (User item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Patronymic)
+                </td>
+                <td>
+                    @{
+                        IdentityRole role = _applicationContext.Roles.FirstOrDefault(p => p.Id ==
+                        _applicationContext.UserRoles.FirstOrDefault(p => p.UserId == item.Id).RoleId);                  
+                    }
+                    @role.Name
+                </td>
+                <td>
+                    @if (role.Name == "curator" && _applicationContext.Runners.Where(p => p.UserId == item.Id).Count() < 1)
+                    {
+                        <form asp-action="deleteUser" asp-route-id="@item.Id" method="post">
+                            <input type="submit" class="btn btn-danger" value="Удалить" />
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

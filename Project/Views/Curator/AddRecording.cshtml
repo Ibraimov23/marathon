@@ -1,0 +1,25 @@
+﻿@model Project.Models.Recording
+@{
+    ViewData["Title"] = "AddRecording";
+}
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="addRecording">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MarathonId" class="control-label">Марафон</label>
+                <select asp-for="MarathonId" class="form-control" asp-items="ViewBag.Marathon" style="width: auto;"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="RunnerId" class="control-label">Клиент</label>
+                <select asp-for="RunnerId" class="form-control" asp-items="ViewBag.Runner" style="width: auto;"></select>
+            </div>
+            <div class="form-group mt-4">
+                <input type="submit" value="Создать" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

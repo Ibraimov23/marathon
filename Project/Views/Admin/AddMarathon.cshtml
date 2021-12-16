@@ -1,0 +1,23 @@
+﻿@model Project.Models.Marathon
+@{
+    ViewData["Title"] = "AddMarathon";
+}
+
+
+<h4>Марафон</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="addMarathon">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <label asp-for="StartFlow">Начала потока</label><br />
+                <input asp-for="StartFlow" type="date" />
+                <span asp-validation-for="StartFlow"></span>
+            </div>
+            <div class="form-group mt-4">
+                <input type="submit" value="Создать" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

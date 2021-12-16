@@ -1,0 +1,58 @@
+﻿@model Project.ViewModels.AddViewModel
+@using Microsoft.AspNetCore.Identity
+@{
+    ViewData["Title"] = "AddUser";
+}
+
+<h4>Пользователь</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="addUser">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <label asp-for="Phone">Телефон</label><br />
+                <input asp-for="Phone" />
+                <span asp-validation-for="Phone"></span>
+            </div>
+            <div>
+                <label asp-for="Surname">Фамилия</label><br />
+                <input asp-for="Surname" />
+                <span asp-validation-for="Surname"></span>
+            </div>
+            <div>
+                <label asp-for="Name">Имя</label><br />
+                <input asp-for="Name" />
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div>
+                <label asp-for="Patronymic">Отчество</label><br />
+                <input asp-for="Patronymic" />
+                <span asp-validation-for="Patronymic"></span>
+            </div>
+            <div>
+                <label asp-for="Password">Пароль</label><br />
+                <input asp-for="Password" />
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div>
+                <label asp-for="PasswordConfirm">Подтвердить пароль</label><br />
+                <input asp-for="PasswordConfirm" />
+                <span asp-validation-for="PasswordConfirm"></span>
+            </div>
+            <div class="form-group">
+                @foreach (IdentityRole role in Model.AllRoles)
+                {
+                    @if (role.Name != "runner")
+                    {
+                        <input type="checkbox" name="roles" value="@role.Name"
+                               onclick="onlyOne(this)" />@role.Name <br />
+                        }
+                }
+            </div>
+            <div class="form-group mt-4">
+                <input type="submit" value="Создать" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

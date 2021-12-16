@@ -1,0 +1,35 @@
+﻿@model Project.ViewModels.RegisterViewModel
+
+<h2>Регистрация нового пользователя</h2>
+<form method="post" asp-action="register">
+    <div asp-validation-summary="ModelOnly"></div>
+    <input type="hidden" asp-for="@Model.UserId" />
+    <div>
+        <label asp-for="Name"></label><br />
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <label asp-for="Surname"></label><br />
+        <input asp-for="Surname" />
+        <span asp-validation-for="Surname"></span>
+    </div>
+    <div>
+        <label asp-for="Patronymic"></label><br />
+        <input asp-for="Patronymic" />
+        <span asp-validation-for="Patronymic"></span>
+    </div>
+    <div>
+        <label asp-for="Phone"></label><br />
+        <input asp-for="Phone" />
+        <span asp-validation-for="Phone"></span>
+    </div>
+    <div>
+        <label asp-for="Comment"></label><br />
+        <input asp-for="Comment" />
+        <span asp-validation-for="Comment"></span>
+    </div>
+    <div>
+        <input type="submit" value="Отправить" />
+    </div>
+</form>

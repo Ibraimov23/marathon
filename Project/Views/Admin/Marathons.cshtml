@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Project.Models.Marathon>
+@{
+    ViewData["Title"] = "Marathons";
+}
+<h1>Марафоны</h1>
+<h5 class="pt-2"><a asp-area="" asp-controller="admin" asp-action="addMarathon">Добавить марафон</a></h5>
+<div class="row">
+    @foreach (Marathon item in Model)
+    {
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Number</h5>
+                    <p class="card-text">Марафон зарегристрирован в @item.StartRegister.</p>
+                    <a href="#" class="btn btn-primary">Присоединиться</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
