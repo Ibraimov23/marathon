@@ -126,7 +126,7 @@ namespace Project.Controllers
             {
                 _applicationContext.Update(runner);
                 await _applicationContext.SaveChangesAsync();
-                return RedirectToAction("users");
+                return RedirectToAction("runners");
             }
             else
             ViewData["Users"] = new SelectList(await _userManager.GetUsersInRoleAsync("curator"), "Id", "Name");
